@@ -1,20 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="333.0" prefWidth="372.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.pabloqc.transmilenio.Controlador">
-    <children>
-        <TextField fx:id="cost" layoutX="239.0" layoutY="41.0" prefHeight="25.0" prefWidth="58.0" text="0" />
-        <Label layoutX="38.0" layoutY="45.0" prefHeight="17.0" prefWidth="96.0" text="Precio de pasaje" />
-        <Label layoutX="38.0" layoutY="93.0" prefHeight="17.0" prefWidth="96.0" text="Dias de clase" />
-        <TextField fx:id="days" layoutX="238.0" layoutY="89.0" prefHeight="25.0" prefWidth="58.0" text="0" />
-        <Label layoutX="39.0" layoutY="140.0" prefHeight="17.0" prefWidth="165.0" text="Dias con doble viaje (opcional)" />
-        <TextField fx:id="doubleDays" layoutX="238.0" layoutY="136.0" prefHeight="25.0" prefWidth="58.0" text="0" />
-        <Button fx:id="calc" layoutX="157.0" layoutY="183.0" mnemonicParsing="false" onAction="#calcular" text="Calcular" />
-        <Label fx:id="WeekText" layoutX="44.0" layoutY="239.0" prefHeight="17.0" prefWidth="84.0" text="Costo semanal:" />
-        <Label fx:id="MonthText" layoutX="45.0" layoutY="277.0" prefHeight="17.0" prefWidth="84.0" text="Costo mensual:" />
-        <Label fx:id="weekly" layoutX="226.0" layoutY="239.0" prefHeight="17.0" prefWidth="84.0" />
-        <Label fx:id="monthly" layoutX="226.0" layoutY="277.0" prefHeight="17.0" prefWidth="84.0" />
-    </children>
-</Pane>
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pabloqc.transmilenio.Controlador">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="400.0" prefWidth="652.0" VBox.vgrow="ALWAYS">
+      <children>
+        <Label alignment="CENTER" layoutX="94.0" layoutY="65.0" prefHeight="20.0" prefWidth="205.0" style="&#10;" text="Dias de Clase" wrapText="false">
+          <font>
+            <Font size="14.0" />
+          </font>
+        </Label>
+        <TextField fx:id="costTravel" layoutX="334.0" layoutY="138.0" prefHeight="26.0" prefWidth="121.0" promptText="0" />
+        <Label alignment="CENTER" layoutX="94.0" layoutY="141.0" style="&#10;" text="Costo de Transporte Por Trayecto" textAlignment="CENTER" wrapText="false">
+          <font>
+            <Font size="14.0" />
+          </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="94.0" layoutY="177.0" prefHeight="20.0" prefWidth="205.0" style="&#10;" text="Costo de Comida por Dia" wrapText="false">
+          <font>
+            <Font size="14.0" />
+          </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="94.0" layoutY="212.0" prefHeight="20.0" prefWidth="205.0" style="&#10;" text="Gastos Extra Semanales" textAlignment="CENTER" wrapText="false">
+          <font>
+            <Font size="14.0" />
+          </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="94.0" layoutY="102.0" prefHeight="20.0" prefWidth="205.0" style="&#10;" text="Dias de Viaje Doble" wrapText="false">
+          <font>
+            <Font size="14.0" />
+          </font>
+        </Label>
+        <TextField fx:id="costFood" layoutX="333.0" layoutY="173.0" prefHeight="26.0" prefWidth="121.0" promptText="0" />
+        <TextField fx:id="costExtra" layoutX="333.0" layoutY="209.0" prefHeight="26.0" prefWidth="121.0" promptText="0" />
+        <TextField fx:id="doubleDays" layoutX="333.0" layoutY="99.0" prefHeight="26.0" prefWidth="121.0" promptText="0" />
+        <TextField fx:id="classDays" layoutX="333.0" layoutY="62.0" prefHeight="26.0" prefWidth="121.0" promptText="0" />
+        <Button fx:id="buttonCalculate" layoutX="288.0" layoutY="256.0" mnemonicParsing="false" onAction="#calcularCostos" text="Calcular" />
+            <Label fx:id="transportCost" layoutX="57.0" layoutY="314.0" text="Gastos semanales en transporte: 00000" />
+            <Label fx:id="foodCost" layoutX="57.0" layoutY="345.0" text="Gastos semanales en comida:  00000" />
+            <Label fx:id="weeklyCosts" layoutX="333.0" layoutY="314.0" text="Gastos semanales totales: 00000" />
+            <Label fx:id="monthlyCosts" layoutX="333.0" layoutY="345.0" text="Gastos mensuales totales: 00000" />
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>
